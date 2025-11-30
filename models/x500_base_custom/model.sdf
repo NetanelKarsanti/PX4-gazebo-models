@@ -2,6 +2,8 @@
 <sdf version='1.9'>
   <model name='x500_base_custom'>
     <pose>0 0 .24 0 0 0</pose>
+
+
     <self_collide>false</self_collide>
     <static>false</static>
     <link name="base_link">
@@ -571,7 +573,7 @@
     </joint>
     <link name="wheel_right_0">
 
-      <pose>0 0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>0 0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -590,7 +592,7 @@
       </inertial>
 
       <collision name="wheel_right_0_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -622,7 +624,7 @@
       </axis>
     </joint>
     <link name="wheel_right_1">
-      <pose>0.073 0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>0.073 0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -640,7 +642,7 @@
         </inertia>
       </inertial>
       <collision name="wheel_right_1_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -664,7 +666,7 @@
       <parent>base_link</parent>
       <child>wheel_right_1</child>
       <axis>
-        <xyz>0 0 1</xyz> 
+        <xyz>0 0 1</xyz>
         <limit>
           <lower>-1e16</lower>
           <upper>1e16</upper>
@@ -672,7 +674,7 @@
       </axis>
     </joint>
     <link name="wheel_right_2">
-      <pose>-0.073 0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>-0.073 0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -690,7 +692,7 @@
         </inertia>
       </inertial>
       <collision name="wheel_right_2_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -714,7 +716,7 @@
       <parent>base_link</parent>
       <child>wheel_right_2</child>
       <axis>
-        <xyz>0 0 1</xyz> 
+        <xyz>0 0 1</xyz>
         <limit>
           <lower>-1e16</lower>
           <upper>1e16</upper>
@@ -723,7 +725,7 @@
     </joint>
     <link name="wheel_left_0">
 
-      <pose>0 -0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>0 -0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -742,7 +744,7 @@
       </inertial>
 
       <collision name="wheel_left_0_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -766,7 +768,7 @@
       <parent>base_link</parent>
       <child>wheel_left_0</child>
       <axis>
-        <xyz>0 0 1</xyz> 
+        <xyz>0 0 1</xyz>
         <limit>
           <lower>-1e16</lower>
           <upper>1e16</upper>
@@ -774,7 +776,7 @@
       </axis>
     </joint>
     <link name="wheel_left_1">
-      <pose>0.073 -0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>0.073 -0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -792,7 +794,7 @@
         </inertia>
       </inertial>
       <collision name="wheel_left_1_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -816,7 +818,7 @@
       <parent>base_link</parent>
       <child>wheel_left_1</child>
       <axis>
-        <xyz>0 0 1</xyz> 
+        <xyz>0 0 1</xyz>
         <limit>
           <lower>-1e16</lower>
           <upper>1e16</upper>
@@ -824,7 +826,7 @@
       </axis>
     </joint>
     <link name="wheel_left_2">
-      <pose>-0.073 -0.091 -0.101 1.570796327 0 0</pose> 
+      <pose>-0.073 -0.091 -0.101 1.570796327 0 0</pose>
 
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -842,7 +844,7 @@
         </inertia>
       </inertial>
       <collision name="wheel_left_2_collision">
-        <pose>0 0 0 0 0 0</pose> 
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.025</radius>
@@ -866,7 +868,7 @@
       <parent>base_link</parent>
       <child>wheel_left_2</child>
       <axis>
-        <xyz>0 0 1</xyz> 
+        <xyz>0 0 1</xyz>
         <limit>
           <lower>-1e16</lower>
           <upper>1e16</upper>
