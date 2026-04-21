@@ -5,6 +5,7 @@
     <pose>0 0 .24 0 0 0</pose>
     <self_collide>false</self_collide>
     <static>false</static>
+    
     <link name="base_link">
       <inertial>
         <mass>2.0</mass>
@@ -19,12 +20,15 @@
       </inertial>
       <gravity>true</gravity>
       <velocity_decay />
+      <!-- assembly STL visual-->
       <visual name="base_link_visual">
-        <pose>0.21 -0.21 -0.133 0 0 1.570796327</pose>
+        <!-- edit here - stl position -->
+        <pose>0.21 -0.21 -0.15 0 0 1.570796327</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://x500_base_custom/meshes/Holybro_X500_V2_UPbattery.STL</uri>
+            <!-- edit here - add model stl/dae file -->
+            <uri>model://x500_base_custom/meshes/AiRGround_Platfurm.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -34,6 +38,7 @@
           </script>
         </material>
       </visual>
+      <!-- motor visual-->
       <visual name="5010_motor_base_0">
         <pose>0.174 0.174 .032 0 0 -.45</pose>
         <geometry>
@@ -70,6 +75,7 @@
           </mesh>
         </geometry>
       </visual>
+      <!-- X500 senser parts visual-->
       <visual name="NXP_FMUK66_FRONT">
         <pose>0.047 .001 .043 1 0 1.57</pose>
         <cast_shadows>false</cast_shadows>
@@ -127,6 +133,7 @@
           </pbr>
         </material>
       </visual>
+      <!-- X500 top box -->
       <collision name="base_link_collision_0">
         <pose>0 0 .007 0 0 0</pose>
         <geometry>
@@ -146,11 +153,12 @@
           </friction>
         </surface>
       </collision>
+      <!-- electric box-->
       <collision name="base_link_collision_1">
-          <pose>0 0 -0.0465 0 0 0</pose>
+          <pose>0 0 -0.03485 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.07 0.08 0.057</size>
+              <size>0.1 0.129 0.0337</size>
             </box>
           </geometry>
           <surface>
@@ -165,25 +173,48 @@
             </friction>
           </surface>
         </collision>
-        <collision name="base_link_collision_2">
-          <pose>0 0 -0.0905 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>0.196 0.175 0.031</size>
-            </box>
-          </geometry>
-          <surface>
-            <contact>
-              <ode>
-                <min_depth>0.001</min_depth>
-                <max_vel>0</max_vel>
-              </ode>
-            </contact>
-            <friction>
-              <ode />
-            </friction>
-          </surface>
-        </collision>
+      <!-- battery box-->
+      <collision name="base_link_collision_2">
+        <pose>0 0 -0.06920 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.068 0.035</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode />
+          </friction>
+        </surface>
+      </collision>
+      <!-- whell base -->
+      <collision name="base_link_collision_3">
+        <pose>0 0 -0.1002 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.2 0.13 0.027</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode />
+          </friction>
+        </surface>
+      </collision>      
+
+      <!-- Standart Px4 Sensors-->
       <sensor name="air_pressure_sensor" type="air_pressure">
         <gz_frame_id>base_link</gz_frame_id>
         <always_on>1</always_on>
@@ -282,6 +313,10 @@
         <update_rate>30</update_rate>
       </sensor>
     </link>
+
+
+    <!-- Px4 Rotors-->
+
     <link name="rotor_0">
       <gravity>true</gravity>
       <self_collide>false</self_collide>
@@ -570,100 +605,28 @@
         </dynamics>
       </axis>
     </joint>
-    <link name="wheel_right_0">
 
-      <pose>0 0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
+    <!-- whell link&joint-->
+    <link name="wheel_L_front_link">
+      <pose>0.08 0.08 -0.1137 1.570796327 0 0</pose>
       <inertial>
-        <mass>0.1</mass>
+        <mass>0.01</mass>
         <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
+          <ixx>0.000001</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>0.000001</iyy><iyz>0</iyz><izz>0.000001</izz>
         </inertia>
       </inertial>
-
-      <collision name="wheel_right_0_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
         <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2><fdir1>1 0 0</fdir1></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd><min_depth>0.001</min_depth><max_vel>0.1</max_vel></ode></contact>
         </surface>
       </collision>
     </link>
-    <joint name="wheel_right_0_joint" type="revolute">
+    <joint name="wheel_L_front_joint" type="revolute">
       <parent>base_link</parent>
-      <child>wheel_right_0</child>
-      <axis>
-        <xyz>0 0 1</xyz> <!-- ציר הסיבוב (Z = מסתובב כמו גלגל אמיתי) -->
-        <limit>
-          <lower>-1e16</lower>
-          <upper>1e16</upper>
-        </limit>
-      </axis>
-    </joint>
-    <link name="wheel_right_1">
-      <pose>0.073 0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
-      <inertial>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
-        </inertia>
-      </inertial>
-      <collision name="wheel_right_1_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
-        <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
-        </surface>
-      </collision>
-    </link>
-    <joint name="wheel_right_1_joint" type="revolute">
-      <parent>base_link</parent>
-      <child>wheel_right_1</child>
+      <child>wheel_L_front_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -671,49 +634,30 @@
           <upper>1e16</upper>
         </limit>
       </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_L_front_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
     </joint>
-    <link name="wheel_right_2">
-      <pose>-0.073 0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
+    <link name="wheel_L_mid_link">
+      <pose>0 0.08 -0.1137 1.570796327 0 0</pose>
       <inertial>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
-        </inertia>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><iyy>0.000001</iyy><izz>0.000001</izz></inertia>
       </inertial>
-      <collision name="wheel_right_2_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
         <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd></ode></contact>
         </surface>
       </collision>
     </link>
-    <joint name="wheel_right_2_joint" type="revolute">
+    <joint name="wheel_L_mid_joint" type="revolute">
       <parent>base_link</parent>
-      <child>wheel_right_2</child>
+      <child>wheel_L_mid_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -721,51 +665,30 @@
           <upper>1e16</upper>
         </limit>
       </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_L_mid_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
     </joint>
-    <link name="wheel_left_0">
-
-      <pose>0 -0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
+    <link name="wheel_L_rear_link">
+      <pose>-0.08 0.08 -0.1137 1.570796327 0 0</pose>
       <inertial>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
-        </inertia>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><iyy>0.000001</iyy><izz>0.000001</izz></inertia>
       </inertial>
-
-      <collision name="wheel_left_0_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
         <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd></ode></contact>
         </surface>
       </collision>
     </link>
-    <joint name="wheel_left_0_joint" type="revolute">
+    <joint name="wheel_L_rear_joint" type="revolute">
       <parent>base_link</parent>
-      <child>wheel_left_0</child>
+      <child>wheel_L_rear_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -773,49 +696,30 @@
           <upper>1e16</upper>
         </limit>
       </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_L_rear_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
     </joint>
-    <link name="wheel_left_1">
-      <pose>0.073 -0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
+    <link name="wheel_R_front_link">
+      <pose>0.08 -0.08 -0.1137 1.570796327 0 0</pose>
       <inertial>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
-        </inertia>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><iyy>0.000001</iyy><izz>0.000001</izz></inertia>
       </inertial>
-      <collision name="wheel_left_1_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
         <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd></ode></contact>
         </surface>
       </collision>
     </link>
-    <joint name="wheel_left_1_joint" type="revolute">
+    <joint name="wheel_R_front_joint" type="revolute">
       <parent>base_link</parent>
-      <child>wheel_left_1</child>
+      <child>wheel_R_front_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -823,49 +727,30 @@
           <upper>1e16</upper>
         </limit>
       </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_R_front_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
     </joint>
-    <link name="wheel_left_2">
-      <pose>-0.073 -0.091 -0.101 1.570796327 0 0</pose>
-
-      <gravity>true</gravity>
-      <self_collide>false</self_collide>
-      <velocity_decay/>
-
+    <link name="wheel_R_mid_link">
+      <pose>0 -0.08 -0.1137 1.570796327 0 0</pose>
       <inertial>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>1.9e-05</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>3.1e-05</iyy>
-          <iyz>0</iyz>
-          <izz>1.9e-05</izz>
-        </inertia>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><iyy>0.000001</iyy><izz>0.000001</izz></inertia>
       </inertial>
-      <collision name="wheel_left_2_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.025</radius>
-            <length>0.005</length>
-          </cylinder>
-        </geometry>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
         <surface>
-          <contact>
-            <ode>
-              <min_depth>0.001</min_depth>
-              <max_vel>0</max_vel>
-            </ode>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd></ode></contact>
         </surface>
       </collision>
     </link>
-    <joint name="wheel_left_2_joint" type="revolute">
+    <joint name="wheel_R_mid_joint" type="revolute">
       <parent>base_link</parent>
-      <child>wheel_left_2</child>
+      <child>wheel_R_mid_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -873,31 +758,52 @@
           <upper>1e16</upper>
         </limit>
       </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_R_mid_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
+    </joint>
+    <link name="wheel_R_rear_link">
+      <pose>-0.08 -0.08 -0.1137 1.570796327 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><iyy>0.000001</iyy><izz>0.000001</izz></inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry><sphere><radius>0.036615</radius></sphere></geometry>
+        <surface>
+          <friction><ode><mu>1000000000000.0</mu><mu2>1000000000000.0</mu2></ode></friction>
+          <contact><ode><kp>1000000000000.0</kp><kd>10.0</kd></ode></contact>
+        </surface>
+      </collision>
+    </link>
+    <joint name="wheel_R_rear_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>wheel_R_rear_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e16</lower>
+          <upper>1e16</upper>
+        </limit>
+      </axis>
+      <gz_ros2_control>
+        <joint_name>wheel_R_rear_joint</joint_name>
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </gz_ros2_control>
     </joint>
 
-    <plugin name="gz::sim::systems::DiffDrive"
-        filename="libgz-sim-diff-drive-system.so">
-
-        <!-- שלושת הג'וינטים של צד שמאל -->
-        <left_joint>wheel_left_0_joint</left_joint>
-        <left_joint>wheel_left_1_joint</left_joint>
-        <left_joint>wheel_left_2_joint</left_joint>
-
-        <!-- שלושת הג'וינטים של צד ימין -->
-        <right_joint>wheel_right_0_joint</right_joint>
-        <right_joint>wheel_right_1_joint</right_joint>
-        <right_joint>wheel_right_2_joint</right_joint>
-
-        <!-- פרמטרים גיאומטריים -->
-        <wheel_radius>0.025</wheel_radius>
-        <wheel_separation>0.0182</wheel_separation>
-
-        <!-- הגבלות מהירות (לא חובה אבל נחמד) -->
-        <max_linear_speed>1.0</max_linear_speed>
-        <max_angular_speed>1.0</max_angular_speed>
-
-        <!-- שם הטופיק שבו הפלאגין יקשיב לפקודות -->
-        <topic>cmd_vel</topic>
+    <!-- ros 2 control whell controlller-->
+    <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='gz_ros2_control-system'>
+      <parameters>/home/netanel/workspaces/AirGroundRobo/install/groundbot_controller/share/groundbot_controller/config/groundbot_controllers.yaml</parameters>
+      <ros>
+        <namespace>/</namespace>
+        <use_sim_time>true</use_sim_time>
+      </ros>
     </plugin>
 
   </model>
