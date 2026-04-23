@@ -23,12 +23,12 @@
       <!-- assembly STL visual-->
       <visual name="base_link_visual">
         <!-- edit here - stl position -->
-        <pose>0.21 -0.21 -0.15 0 0 1.570796327</pose>
+        <pose> -0.3 0.3 -0.15 0 0 -1.570796327</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <!-- edit here - add model stl/dae file -->
-            <uri>model://x500_base_custom/meshes/AiRGround_Platfurm.STL</uri>
+            <uri>model://x500_base_custom/meshes/Holybro_X500_V4.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -158,7 +158,7 @@
           <pose>0 0 -0.03485 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.1 0.129 0.0337</size>
+              <size>0.125 0.068 0.035</size>
             </box>
           </geometry>
           <surface>
@@ -178,7 +178,7 @@
         <pose>0 0 -0.06920 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.1 0.068 0.035</size>
+            <size>0.14 0.129 0.0337</size>
           </box>
         </geometry>
         <surface>
