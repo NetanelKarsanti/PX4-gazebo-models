@@ -799,7 +799,7 @@
 
     <!-- ros 2 control whell controlller-->
     <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='gz_ros2_control-system'>
-      <parameters>/home/netanel/workspaces/AirGroundRobo/install/groundbot_controller/share/groundbot_controller/config/groundbot_controllers.yaml</parameters>
+      <parameters>/home/netanel/workspaces/AirGroundRobo/install/airgroundbot_controller/share/airgroundbot_controller/config/groundbot_controllers.yaml</parameters>
       <ros>
         <namespace>/</namespace>
         <use_sim_time>true</use_sim_time>
